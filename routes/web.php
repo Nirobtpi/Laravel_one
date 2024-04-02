@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\CategoryCon;
+use App\Http\Controllers\PhotoUpload;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\UploadPhotoController;
 
 
 /*
@@ -40,6 +42,11 @@ Route::get('/deleted-subcategory',[SubCategoryController::class, "deletedSubCate
 
 Route::get('/restore/{id}',[SubCategoryController::class,'restore']);
 Route::get('/permanent_delete/{id}',[SubCategoryController::class,'permanentDelete']);
+
+// photo Upload 
+Route::get('/add-file',[UploadPhotoController::class,'url']);
+Route::post('/add-file',[UploadPhotoController::class,'addPhoto']);
+Route::get('/show-photo',[UploadPhotoController::class,'viewPhoto']);
 
 Auth::routes();
 

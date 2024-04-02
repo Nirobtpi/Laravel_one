@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryCon extends Controller
 {
@@ -40,7 +41,9 @@ class CategoryCon extends Controller
     function viewCategory(){
         // $categories=Category::all();
         $categories=Category::orderby('category_name','asc')->simplepaginate('3');
+       
         return view('backend.category-view', compact('categories'));
+
     }
 
     function deleteCategory($id){
